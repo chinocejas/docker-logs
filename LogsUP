@@ -1,0 +1,252 @@
+Starting cride-platzi_postgres_1 ... done
+Starting cride-platzi_redis_1    ... done
+Recreating cride-platzi_flower_1       ... done
+Recreating cride-platzi_django_1       ... done
+Recreating cride-platzi_celerybeat_1   ... done
+Recreating cride-platzi_celeryworker_1 ... done
+Attaching to cride-platzi_postgres_1, cride-platzi_redis_1, cride-platzi_celerybeat_1, cride-platzi_flower_1, cride-platzi_celeryworker_1, cride-platzi_django_1
+redis_1         | 1:C 17 Jun 15:18:25.924 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+postgres_1      | 2019-06-17 15:18:28.080 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres_1      | 2019-06-17 15:18:28.080 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres_1      | 2019-06-17 15:18:28.082 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres_1      | 2019-06-17 15:18:28.154 UTC [21] LOG:  database system was interrupted; last known up at 2019-06-17 15:10:28 UTC
+postgres_1      | 2019-06-17 15:18:28.274 UTC [21] LOG:  database system was not properly shut down; automatic recovery in progress
+postgres_1      | 2019-06-17 15:18:28.275 UTC [21] LOG:  redo starts at 0/172FEA8
+postgres_1      | 2019-06-17 15:18:28.275 UTC [21] LOG:  invalid record length at 0/172FEE0: wanted 24, got 0
+postgres_1      | 2019-06-17 15:18:28.276 UTC [21] LOG:  redo done at 0/172FEA8
+celeryworker_1  | Waiting for PostgreSQL to become available...
+celerybeat_1    | Waiting for PostgreSQL to become available...
+flower_1        | Waiting for PostgreSQL to become available...
+django_1        | Waiting for PostgreSQL to become available...
+celerybeat_1    | PostgreSQL is available
+flower_1        | PostgreSQL is available
+celerybeat_1    | celery beat v4.3.0 (rhubarb) is starting.
+celerybeat_1    | __    -    ... __   -        _
+celerybeat_1    | LocalTime -> 2019-06-17 15:18:34
+celerybeat_1    | Configuration ->
+celerybeat_1    |     . broker -> redis://redis:6379/0
+celerybeat_1    |     . loader -> celery.loaders.app.AppLoader
+celerybeat_1    |     . scheduler -> celery.beat.PersistentScheduler
+celerybeat_1    |     . db -> celerybeat-schedule
+celerybeat_1    |     . logfile -> [stderr]@%INFO
+celerybeat_1    |     . maxinterval -> 5.00 minutes (300s)
+django_1        | PostgreSQL is available
+django_1        | Operations to perform:
+flower_1        | [I 190617 15:18:34 command:139] Visit me at http://localhost:5555
+celerybeat_1    | [2019-06-17 15:18:34,329: INFO/MainProcess] beat: Starting...
+celerybeat_1    | [2019-06-17 15:18:34,395: ERROR/MainProcess] Removing corrupted schedule file 'celerybeat-schedule': error(22, 'Invalid argument')
+celerybeat_1    | Traceback (most recent call last):
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/kombu/utils/objects.py", line 42, in __get__
+celerybeat_1    |     return obj.__dict__[self.__name__]
+celerybeat_1    | KeyError: 'scheduler'
+celerybeat_1    |
+celerybeat_1    | During handling of the above exception, another exception occurred:
+celerybeat_1    |
+celerybeat_1    | Traceback (most recent call last):
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 485, in setup_schedule
+celerybeat_1    |     self._store = self._open_schedule()
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 475, in _open_schedule
+celerybeat_1    |     return self.persistence.open(self.schedule_filename, writeback=True)
+celerybeat_1    |   File "/usr/local/lib/python3.6/shelve.py", line 243, in open
+celerybeat_1    |     return DbfilenameShelf(filename, flag, protocol, writeback)
+celerybeat_1    |   File "/usr/local/lib/python3.6/shelve.py", line 227, in __init__
+celerybeat_1    |     Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+celerybeat_1    |   File "/usr/local/lib/python3.6/dbm/__init__.py", line 94, in open
+celerybeat_1    |     return mod.open(file, flag, mode)
+celeryworker_1  | PostgreSQL is available
+celerybeat_1    | _gdbm.error: [Errno 22] Invalid argument
+celerybeat_1    | [2019-06-17 15:18:34,414: CRITICAL/MainProcess] beat raised exception <class '_gdbm.error'>: error(22, 'Invalid argument')
+celerybeat_1    | Traceback (most recent call last):
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/kombu/utils/objects.py", line 42, in __get__
+celerybeat_1    |     return obj.__dict__[self.__name__]
+celerybeat_1    | KeyError: 'scheduler'
+celerybeat_1    |
+celerybeat_1    | During handling of the above exception, another exception occurred:
+celerybeat_1    |
+celerybeat_1    | Traceback (most recent call last):
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 485, in setup_schedule
+celerybeat_1    |     self._store = self._open_schedule()
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 475, in _open_schedule
+celerybeat_1    |     return self.persistence.open(self.schedule_filename, writeback=True)
+celerybeat_1    |   File "/usr/local/lib/python3.6/shelve.py", line 243, in open
+celerybeat_1    |     return DbfilenameShelf(filename, flag, protocol, writeback)
+celerybeat_1    |   File "/usr/local/lib/python3.6/shelve.py", line 227, in __init__
+celerybeat_1    |     Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+celerybeat_1    |   File "/usr/local/lib/python3.6/dbm/__init__.py", line 94, in open
+celerybeat_1    |     return mod.open(file, flag, mode)
+celerybeat_1    | _gdbm.error: [Errno 22] Invalid argument
+celerybeat_1    |
+celerybeat_1    | During handling of the above exception, another exception occurred:
+celerybeat_1    |
+celerybeat_1    | Traceback (most recent call last):
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/apps/beat.py", line 109, in start_scheduler
+celerybeat_1    |     service.start()
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 588, in start
+celerybeat_1    |     humanize_seconds(self.scheduler.max_interval))
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/kombu/utils/objects.py", line 44, in __get__
+celerybeat_1    |     value = obj.__dict__[self.__name__] = self.__get(obj)
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 632, in scheduler
+celerybeat_1    |     return self.get_scheduler()
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 627, in get_scheduler
+celerybeat_1    |     lazy=lazy,
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 467, in __init__
+celerybeat_1    |     Scheduler.__init__(self, *args, **kwargs)
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 226, in __init__
+celerybeat_1    |     self.setup_schedule()
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 493, in setup_schedule
+celerybeat_1    |     self._store = self._destroy_open_corrupted_schedule(exc)
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 481, in _destroy_open_corrupted_schedule
+celerybeat_1    |     return self._open_schedule()
+celerybeat_1    |   File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 475, in _open_schedule
+celerybeat_1    |     return self.persistence.open(self.schedule_filename, writeback=True)
+celerybeat_1    |   File "/usr/local/lib/python3.6/shelve.py", line 243, in open
+celerybeat_1    |     return DbfilenameShelf(filename, flag, protocol, writeback)
+celerybeat_1    |   File "/usr/local/lib/python3.6/shelve.py", line 227, in __init__
+celerybeat_1    |     Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+celerybeat_1    |   File "/usr/local/lib/python3.6/dbm/__init__.py", line 94, in open
+celerybeat_1    |     return mod.open(file, flag, mode)
+celerybeat_1    | _gdbm.error: [Errno 22] Invalid argument
+celerybeat_1    | [2019-06-17 15:18:34,415: WARNING/MainProcess] Traceback (most recent call last):
+celerybeat_1    | [2019-06-17 15:18:34,416: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/kombu/utils/objects.py", line 42, in __get__
+celerybeat_1    | [2019-06-17 15:18:34,416: WARNING/MainProcess] return obj.__dict__[self.__name__]
+celerybeat_1    | [2019-06-17 15:18:34,416: WARNING/MainProcess] KeyError
+celerybeat_1    | [2019-06-17 15:18:34,417: WARNING/MainProcess] :
+celerybeat_1    | [2019-06-17 15:18:34,418: WARNING/MainProcess] 'scheduler'
+celerybeat_1    | [2019-06-17 15:18:34,419: WARNING/MainProcess] During handling of the above exception, another exception occurred:
+celerybeat_1    | [2019-06-17 15:18:34,424: WARNING/MainProcess] Traceback (most recent call last):
+celerybeat_1    | [2019-06-17 15:18:34,429: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 485, in setup_schedule
+celerybeat_1    | [2019-06-17 15:18:34,430: WARNING/MainProcess] self._store = self._open_schedule()
+celerybeat_1    | [2019-06-17 15:18:34,435: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 475, in _open_schedule
+celerybeat_1    | [2019-06-17 15:18:34,436: WARNING/MainProcess] return self.persistence.open(self.schedule_filename, writeback=True)
+flower_1        | [I 190617 15:18:34 command:144] Broker: redis://redis:6379/0
+flower_1        | [I 190617 15:18:34 command:147] Registered tasks:
+flower_1        |     ['celery.accumulate',
+flower_1        |      'celery.backend_cleanup',
+flower_1        |      'celery.chain',
+flower_1        |      'celery.chord',
+flower_1        |      'celery.chord_unlock',
+flower_1        |      'celery.chunks',
+flower_1        |      'celery.group',
+flower_1        |      'celery.map',
+flower_1        |      'celery.starmap',
+flower_1        |      'disable_finished_rides',
+celerybeat_1    | [2019-06-17 15:18:34,436: WARNING/MainProcess] File "/usr/local/lib/python3.6/shelve.py", line 243, in open
+celerybeat_1    | [2019-06-17 15:18:34,439: WARNING/MainProcess] return DbfilenameShelf(filename, flag, protocol, writeback)
+celerybeat_1    | [2019-06-17 15:18:34,449: WARNING/MainProcess] File "/usr/local/lib/python3.6/shelve.py", line 227, in __init__
+celerybeat_1    | [2019-06-17 15:18:34,451: WARNING/MainProcess] Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+celerybeat_1    | [2019-06-17 15:18:34,451: WARNING/MainProcess] File "/usr/local/lib/python3.6/dbm/__init__.py", line 94, in open
+celerybeat_1    | [2019-06-17 15:18:34,454: WARNING/MainProcess] return mod.open(file, flag, mode)
+celerybeat_1    | [2019-06-17 15:18:34,455: WARNING/MainProcess] _gdbm
+celerybeat_1    | [2019-06-17 15:18:34,462: WARNING/MainProcess] .
+celerybeat_1    | [2019-06-17 15:18:34,462: WARNING/MainProcess] error
+celerybeat_1    | [2019-06-17 15:18:34,465: WARNING/MainProcess] :
+celerybeat_1    | [2019-06-17 15:18:34,466: WARNING/MainProcess] [Errno 22] Invalid argument
+celerybeat_1    | [2019-06-17 15:18:34,468: WARNING/MainProcess] During handling of the above exception, another exception occurred:
+celerybeat_1    | [2019-06-17 15:18:34,469: WARNING/MainProcess] Traceback (most recent call last):
+celerybeat_1    | [2019-06-17 15:18:34,469: WARNING/MainProcess] File "/usr/local/bin/celery", line 10, in <module>
+django_1        |   Apply all migrations: admin, auth, authtoken, circles, contenttypes, rides, sessions, users
+celerybeat_1    | [2019-06-17 15:18:34,470: WARNING/MainProcess] sys.exit(main())
+django_1        | Running migrations:
+celerybeat_1    | [2019-06-17 15:18:34,476: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/__main__.py", line 16, in main
+celerybeat_1    | [2019-06-17 15:18:34,479: WARNING/MainProcess] _main()
+celerybeat_1    | [2019-06-17 15:18:34,482: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/celery.py", line 322, in main
+celerybeat_1    | [2019-06-17 15:18:34,482: WARNING/MainProcess] cmd.execute_from_commandline(argv)
+celerybeat_1    | [2019-06-17 15:18:34,483: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/celery.py", line 496, in execute_from_commandline
+celerybeat_1    | [2019-06-17 15:18:34,484: WARNING/MainProcess] super(CeleryCommand, self).execute_from_commandline(argv)))
+celerybeat_1    | [2019-06-17 15:18:34,488: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/base.py", line 298, in execute_from_commandline
+celerybeat_1    | [2019-06-17 15:18:34,492: WARNING/MainProcess] return self.handle_argv(self.prog_name, argv[1:])
+celerybeat_1    | [2019-06-17 15:18:34,492: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/celery.py", line 488, in handle_argv
+celerybeat_1    | [2019-06-17 15:18:34,494: WARNING/MainProcess] return self.execute(command, argv)
+celerybeat_1    | [2019-06-17 15:18:34,494: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/celery.py", line 420, in execute
+celerybeat_1    | [2019-06-17 15:18:34,498: WARNING/MainProcess] ).run_from_argv(self.prog_name, argv[1:], command=argv[0])
+celerybeat_1    | [2019-06-17 15:18:34,498: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/base.py", line 302, in run_from_argv
+celerybeat_1    | [2019-06-17 15:18:34,499: WARNING/MainProcess] sys.argv if argv is None else argv, command)
+celerybeat_1    | [2019-06-17 15:18:34,500: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/base.py", line 386, in handle_argv
+celerybeat_1    | [2019-06-17 15:18:34,503: WARNING/MainProcess] return self(*args, **options)
+celerybeat_1    | [2019-06-17 15:18:34,504: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/base.py", line 252, in __call__
+celerybeat_1    | [2019-06-17 15:18:34,505: WARNING/MainProcess] ret = self.run(*args, **kwargs)
+celerybeat_1    | [2019-06-17 15:18:34,509: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/bin/beat.py", line 109, in run
+celerybeat_1    | [2019-06-17 15:18:34,513: WARNING/MainProcess] return beat().run()
+celerybeat_1    | [2019-06-17 15:18:34,514: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/apps/beat.py", line 81, in run
+celerybeat_1    | [2019-06-17 15:18:34,516: WARNING/MainProcess] self.start_scheduler()
+celerybeat_1    | [2019-06-17 15:18:34,517: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/apps/beat.py", line 109, in start_scheduler
+celerybeat_1    | [2019-06-17 15:18:34,518: WARNING/MainProcess] service.start()
+celerybeat_1    | [2019-06-17 15:18:34,520: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 588, in start
+celerybeat_1    | [2019-06-17 15:18:34,525: WARNING/MainProcess] humanize_seconds(self.scheduler.max_interval))
+celerybeat_1    | [2019-06-17 15:18:34,525: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/kombu/utils/objects.py", line 44, in __get__
+celerybeat_1    | [2019-06-17 15:18:34,525: WARNING/MainProcess] value = obj.__dict__[self.__name__] = self.__get(obj)
+celerybeat_1    | [2019-06-17 15:18:34,527: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 632, in scheduler
+celerybeat_1    | [2019-06-17 15:18:34,531: WARNING/MainProcess] return self.get_scheduler()
+celerybeat_1    | [2019-06-17 15:18:34,531: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 627, in get_scheduler
+celerybeat_1    | [2019-06-17 15:18:34,532: WARNING/MainProcess] lazy=lazy,
+celerybeat_1    | [2019-06-17 15:18:34,534: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 467, in __init__
+celerybeat_1    | [2019-06-17 15:18:34,535: WARNING/MainProcess] Scheduler.__init__(self, *args, **kwargs)
+celerybeat_1    | [2019-06-17 15:18:34,537: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 226, in __init__
+celerybeat_1    | [2019-06-17 15:18:34,542: WARNING/MainProcess] self.setup_schedule()
+celerybeat_1    | [2019-06-17 15:18:34,542: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 493, in setup_schedule
+celerybeat_1    | [2019-06-17 15:18:34,543: WARNING/MainProcess] self._store = self._destroy_open_corrupted_schedule(exc)
+celerybeat_1    | [2019-06-17 15:18:34,544: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 481, in _destroy_open_corrupted_schedule
+celerybeat_1    | [2019-06-17 15:18:34,545: WARNING/MainProcess] return self._open_schedule()
+celerybeat_1    | [2019-06-17 15:18:34,547: WARNING/MainProcess] File "/usr/local/lib/python3.6/site-packages/celery/beat.py", line 475, in _open_schedule
+celerybeat_1    | [2019-06-17 15:18:34,549: WARNING/MainProcess] return self.persistence.open(self.schedule_filename, writeback=True)
+celerybeat_1    | [2019-06-17 15:18:34,552: WARNING/MainProcess] File "/usr/local/lib/python3.6/shelve.py", line 243, in open
+celerybeat_1    | [2019-06-17 15:18:34,552: WARNING/MainProcess] return DbfilenameShelf(filename, flag, protocol, writeback)
+celerybeat_1    | [2019-06-17 15:18:34,553: WARNING/MainProcess] File "/usr/local/lib/python3.6/shelve.py", line 227, in __init__
+celerybeat_1    | [2019-06-17 15:18:34,555: WARNING/MainProcess] Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+celerybeat_1    | [2019-06-17 15:18:34,557: WARNING/MainProcess] File "/usr/local/lib/python3.6/dbm/__init__.py", line 94, in open
+celerybeat_1    | [2019-06-17 15:18:34,560: WARNING/MainProcess] return mod.open(file, flag, mode)
+celerybeat_1    | [2019-06-17 15:18:34,561: WARNING/MainProcess] _gdbm
+celerybeat_1    | [2019-06-17 15:18:34,562: WARNING/MainProcess] .
+celerybeat_1    | [2019-06-17 15:18:34,562: WARNING/MainProcess] error
+celerybeat_1    | [2019-06-17 15:18:34,562: WARNING/MainProcess] :
+flower_1        |      'send_confirmation_email']
+celeryworker_1  | /usr/local/lib/python3.6/site-packages/celery/platforms.py:801: RuntimeWarning: You're running the worker with superuser privileges: this is
+celeryworker_1  | absolutely not recommended!
+celeryworker_1  |
+celeryworker_1  | Please specify a different user using the --uid option.
+celeryworker_1  |
+celeryworker_1  | User information: uid=0 euid=0 gid=0 egid=0
+celeryworker_1  |
+celeryworker_1  |   uid=uid, euid=euid, gid=gid, egid=egid,
+celeryworker_1  |
+celeryworker_1  |  -------------- celery@4b93512d1fde v4.3.0 (rhubarb)
+celeryworker_1  | ---- **** -----
+celeryworker_1  | --- * ***  * -- Linux-4.14.116-boot2docker-x86_64-with 2019-06-17 15:18:34
+celeryworker_1  | -- * - **** ---
+celeryworker_1  | - ** ---------- [config]
+celeryworker_1  | - ** ---------- .> app:         cride:0x7fc53bb2ad30
+celeryworker_1  | - ** ---------- .> transport:   redis://redis:6379/0
+celeryworker_1  | - ** ---------- .> results:     redis://redis:6379/0
+celeryworker_1  | - *** --- * --- .> concurrency: 1 (prefork)
+celeryworker_1  | -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+celeryworker_1  | --- ***** -----
+celeryworker_1  |  -------------- [queues]
+celeryworker_1  |                 .> celery           exchange=celery(direct) key=celery
+celeryworker_1  |
+celeryworker_1  |
+celeryworker_1  | [tasks]
+celeryworker_1  |   . disable_finished_rides
+celeryworker_1  |   . send_confirmation_email
+celerybeat_1    | [2019-06-17 15:18:34,563: WARNING/MainProcess] [Errno 22] Invalid argument
+cride-platzi_celerybeat_1 exited with code 1
+celeryworker_1  |
+celeryworker_1  | [2019-06-17 15:18:35,101: INFO/MainProcess] Connected to redis://redis:6379/0
+celeryworker_1  | [2019-06-17 15:18:35,128: INFO/MainProcess] mingle: searching for neighbors
+celeryworker_1  | [2019-06-17 15:18:36,165: INFO/MainProcess] mingle: all alone
+celeryworker_1  | [2019-06-17 15:18:36,185: WARNING/MainProcess] /usr/local/lib/python3.6/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+celeryworker_1  |   warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+django_1        |   No migrations to apply.
+django_1        | Watching for file changes with StatReloader
+django_1        | Performing system checks...
+django_1        |
+django_1        | System check identified no issues (0 silenced).
+django_1        | June 17, 2019 - 15:18:37
+flower_1        | [I 190617 15:18:34 mixins:229] Connected to redis://redis:6379/0
+flower_1        | [W 190617 15:18:38 control:44] 'stats' inspect method failed
+flower_1        | [W 190617 15:18:38 control:44] 'active_queues' inspect method failed
+flower_1        | [W 190617 15:18:38 control:44] 'registered' inspect method failed
+flower_1        | [W 190617 15:18:38 control:44] 'scheduled' inspect method failed
+flower_1        | [W 190617 15:18:38 control:44] 'active' inspect method failed
+flower_1        | [W 190617 15:18:38 control:44] 'reserved' inspect method failed
+flower_1        | [W 190617 15:18:38 control:44] 'revoked' inspect method failed
+celeryworker_1  | [2019-06-17 15:18:36,185: INFO/MainProcess] celery@4b93512d1fde ready.
